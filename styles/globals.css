@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+.loader{
+  background-image: url('../public/loader.gif');
+  background-position: center;
+  background-size: cover;
+}
