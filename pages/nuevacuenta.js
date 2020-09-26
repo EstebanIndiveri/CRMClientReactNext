@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Layout from '../components/Layout';
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
 import {useMutation,gql} from '@apollo/client';
+import {useRouter} from 'next/router';
 
 const NUEVA_CUENTA=gql`
 
@@ -20,7 +21,9 @@ const NuevaCuenta = () => {
 
     //mutation new user
     const [nuevoUsuario]=useMutation(NUEVA_CUENTA);
+    const [mensaje, setMensaje] = useState(null);
     
+    const router=useRouter();
 
     const formik=useFormik({
         initialValues:{
@@ -36,18 +39,60 @@ const NuevaCuenta = () => {
             password:Yup.string().required('El password no puede ir vacio').min(6,'El password debe ser de al menos 6 caracteres')
 
         }),
-        onSubmit:valores=>{
-            console.log('enviando');
-            console.log(valores);
+        onSubmit:async valores=>{
+            // console.log('enviando');
+            // console.log(valores);
+            const {nombre,apellido,email,password}=valores;
 
-            try
+            try {
+                const{data}=await nuevoUsuario({
+                    variables:{
+                        input:{
+                            nombre,
+                            apellido,
+                            email,
+                            password
+                        }
+                    }
+                })
+                console.log(data);
+
+                //user creado
+                setMensaje(`Se creo correctamente el Usuario: ${data.nuevoUsuario.nombre}`)
+
+                setTimeout(() => {
+                    setMensaje(null);
+                    router.push('/login');
+                }, 3000);
+                //redirect
+
+            } catch (error) {
+                setMensaje(error.message);
+                // console.log(error.message);
+                console.log(error);
+                //feedback que ya existe le correo
+                setTimeout(() => {
+                    setMensaje(null);
+                }, 3000);
+            }
         }
     });
         
-    if(loading)return (<div style={{height:'100vh',zIndex:1}} className="loader h-screen w-screen"></div>)
+    // if(loading)return (<div style={{height:'100vh',zIndex:1}} className="loader h-screen w-screen"></div>)
+
+    const MostrarMensaje=()=>{
+        return(
+            <div className="bg-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
+                <p>{mensaje}</p>
+            </div>
+        )
+    }
 
     return ( 
         <Layout>
+
+            {mensaje && MostrarMensaje()}
+
             <h1 className="text-center text-2xl text-white font-light">Crear Nueva Cuenta</h1>
             <div className="flex justify-center mt-5">
                 <div className="w-full max-w-sm">
