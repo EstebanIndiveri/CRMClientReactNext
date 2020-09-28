@@ -10,6 +10,7 @@ const httpLink=createHttpLink({
 const authLink=setContext((_,{headers})=>{
     //read storage
     const token=localStorage.getItem('token');
+    //`Bearer ${token}`
 return{
     headers:{
         ...headers,
