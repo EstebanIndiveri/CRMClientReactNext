@@ -17,7 +17,7 @@ const Header = () => {
     const router=useRouter();
     //query apollo
     const{data,loading,error}=useQuery(OBTENER_USUARIO);
-    console.log(data);
+    // console.log(data);
  
     if(loading)return (<div style={{height:'100vh',zIndex:1,opacity:0.7}} className="loader h-screen w-screen animate__animated animate__fadeIn"></div>)
     if(!data) return router.push('/login')
