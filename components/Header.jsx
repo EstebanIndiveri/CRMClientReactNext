@@ -32,12 +32,12 @@ const Header = () => {
     return ( 
     <div className="flex justify-between mb-6">
 
-        <p className="mr-2">Hola: {nombre} {apellido}</p> 
+        <p className="mr-2 animate__animated animate__fadeIn animate__delay-1s">Hola: {nombre} {apellido}</p> 
 
         <button
         onClick={()=>cerraSesion()}
         type="button"
-        className="bg-blue-800 w-full sm:w-auto font-bold uppercase text-xs rounded py-1 px-2 text-white shadow-lg hover:bg-red-400 transition duration-500 ease-in-out"
+        className="bg-blue-800 w-full sm:w-auto font-bold uppercase text-xs rounded py-1 px-2 text-white shadow-lg hover:bg-red-400 transition duration-500 ease-in-out animate__animated animate__fadeIn animate__delay-1s"
         >
             Cerrar sesión
         </button>

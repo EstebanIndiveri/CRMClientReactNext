@@ -1,9 +1,10 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import {gql,useQuery} from '@apollo/client';
+import {gql,useQuery,useMutation} from '@apollo/client';
 import {Formik} from 'formik'
 import * as Yup from 'yup';
+import Swal from 'sweetalert2';
 
 const OBTENER_CLIENTE=gql`
         query obtenerCliente($id:ID!){
@@ -15,6 +16,28 @@ const OBTENER_CLIENTE=gql`
             telefono
         }
     }
+`;
+
+const ACTUALIZAR_CLIENTE=gql`
+mutation actualizarCliente($id:ID!,$input:ClienteInput){
+        actualizarCliente(id:$id,input:$input){
+            nombre
+            apellido
+            empresa
+            telefono
+        }
+    }
+`;
+const OBTENER_CLIENTES_USUARIO=gql`
+  query obtenerClientesVendedor{
+  obtenerClientesVendedor{
+    id
+    nombre
+    apellido
+    email
+    empresa
+  }
+}
 `;
 //schma validation
 const schemaValidation=Yup.object({
@@ -28,7 +51,7 @@ const EditarCliente = () => {
 
     const router=useRouter();
     const{query:{id}}=router;
-    console.log(id);
+    // console.log(id);
 
     //consulta
     const{data,loading,error}=useQuery(OBTENER_CLIENTE,{
@@ -36,12 +59,57 @@ const EditarCliente = () => {
             id
         }
     });
+    //update client
+    const[actualizarCliente]=useMutation(ACTUALIZAR_CLIENTE,{
+        update(cache,{data:{actualizarCliente}}){
+            //copia del objet cache
+            const{obtenerClientesVendedor}=cache.readQuery({query:OBTENER_CLIENTES_USUARIO});
+
+            cache.writeQuery({
+                query:OBTENER_CLIENTES_USUARIO,
+                data:{
+                    obtenerClientesVendedor:[...obtenerClientesVendedor,actualizarCliente]
+                }
+            })
+        }
+    });
+
+
     // console.log(data);
 
     if(loading)return (<div style={{height:'100vh',zIndex:1,opacity:0.7}} className="loader h-screen w-screen animate__animated animate__fadeIn"></div>)
     // console.log(data.obtenerCliente);
     const{obtenerCliente}=data;
 
+    //modificlientDB
+    const actualizarInfoCliente=async (valores)=>{
+        const{nombre,apellido,empresa,email,telefono}=valores;
+        try {
+            const{data}=await actualizarCliente({
+                variables:{
+                    id,
+                    input:{
+                        nombre,
+                        apellido,
+                        empresa,
+                        email,
+                        telefono
+                    }
+                }
+            })
+            // console.log(data);
+            // sweetalert
+            Swal.fire(
+                'Actualizado!',
+                'Cliente actualizado correctamente',
+                'success'
+            )
+            //redirect
+            router.push('/');
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 
     return (
@@ -54,8 +122,8 @@ const EditarCliente = () => {
                     validationSchema={schemaValidation}
                     enableReinitialize
                     initialValues={obtenerCliente}
-                    onSubmit={()=>{
-                        console.log('editando');
+                    onSubmit={(valores)=>{
+                       actualizarInfoCliente(valores);
                     }}
                     >
                     {props=>{
@@ -171,7 +239,7 @@ const EditarCliente = () => {
                             <input
                             type="submit"
                             className="bg-gray-800 w-full mt-5 p-2 text-white uppercase font-bold hover:bg-gray-700 shadow-md transition duration-500 ease-in-out"
-                            value="Registrar Cliente"
+                            value="Editar Cliente"
                             />
 
                         </form>

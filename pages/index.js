@@ -35,7 +35,7 @@ export default function Home() {
       <h1 className="text-2xl text-gray-800 font-light animate__animated animate__fadeIn animate__delay-1s">Clientes</h1>
       <Link href="/nuevocliente">
         <a className="bg-blue-800 py-2 px-5 mt-3 inline-block text-white
-        rounded text-sm hover:bg-gray-600 mb-3 uppercase font-bold shadow-md transition duration-300 ease-in-out">Nuevo Cliente</a>
+        rounded text-sm hover:bg-gray-600 mb-3 uppercase font-bold shadow-md transition duration-300 ease-in-out animate__animated animate__fadeIn animate__delay-2s">Nuevo Cliente</a>
       </Link>
       {data.obtenerClientesVendedor.length===0 ? (<><h1 className="text-3xl animate__animated animate__fadeIn animate__delay-1s">No tienes clientes todavía</h1><br/>
       <p className=" text-2xl  text-center animate__animated animate__fadeIn animate__delay-2s">¡Vamos a realizar ventas!</p>
