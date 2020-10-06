@@ -228,7 +228,7 @@ const EditarCliente = () => {
                                 className="shadow-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline transition-all duration-500 ease-in-out"
                                 id="telefono"
                                 type="tel"
-                                placeholder="Teléfono Cliente"
+                                placeholder="Teléfono del Cliente"
                                 onChange={props.handleChange}
                                 onBlur={props.handleBlur}
                                 value={props.values.telefono}
