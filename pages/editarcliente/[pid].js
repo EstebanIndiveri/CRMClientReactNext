@@ -101,7 +101,7 @@ const EditarCliente = () => {
             // sweetalert
             Swal.fire(
                 'Actualizado!',
-                'Cliente actualizado correctamente',
+                '¡Cliente actualizado correctamente!',
                 'success'
             )
             //redirect
