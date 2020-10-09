@@ -68,7 +68,7 @@ const Login = () => {
 
     const MostrarMensaje=()=>{
         return(
-            <div className="bg-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto">
+            <div className="bg-white py-2 px-3 w-full my-3 max-w-sm text-center mx-auto animate__animated animate__fadeIn">
                 <p>{mensaje}</p>
             </div>
         )
@@ -99,7 +99,7 @@ const Login = () => {
                             />
                         </div>
                         {formik.touched.email && formik.errors.email?(
-                            <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+                            <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 animate__animated animate__fadeIn">
                                 <p className="font-bold">Error</p>
                                 <p>{formik.errors.email}</p>
                             </div>
@@ -120,7 +120,7 @@ const Login = () => {
                             />
                         </div>
                         {formik.touched.password && formik.errors.password?(
-                            <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4">
+                            <div className="my-2 bg-red-100 border-l-4 border-red-500 text-red-700 p-4 animate__animated animate__fadeIn">
                                 <p className="font-bold">Error</p>
                                 <p>{formik.errors.password}</p>
                             </div>
