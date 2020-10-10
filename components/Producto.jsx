@@ -3,9 +3,11 @@ import React from 'react'
 
 const Producto = ({producto}) => {
     const{nombre}=producto
-    return ( 
+    console.log();
+    return ( <div>
         <h1>{nombre}</h1>
         <p>test</p>
+        </div>
      );
 }
  
