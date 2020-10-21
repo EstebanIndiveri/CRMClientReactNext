@@ -1,11 +1,19 @@
 import React from 'react';
 import Layout from '../components/Layout';
+import Link from 'next/link';
 
 const Pedidos = () => {
     return ( 
         <div>
             <Layout>
             <h1 className="text-2xl text-gray-800 font-light animate__animated animate__fadeIn animate__delay-2s">Pedidos</h1>
+
+            <Link href="/nuevopedido">
+                <a className="bg-blue-800 py-2 px-5 mt-3 inline-block text-white
+                rounded text-sm hover:bg-gray-600 mb-3 uppercase font-bold shadow-md transition duration-300 ease-in-out animate__animated animate__fadeIn animate__delay-2s">
+                Nuevo Pedido
+                </a>
+            </Link>
             </Layout>
         </div>
         );
