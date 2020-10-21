@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Layout from '../components/Layout';
 import AsignarCliente from '../components/pedidos/AsignarCliente';
+import PedidoContext from '../context/pedidos/PedidoContext';
 
 const NuevoPedido = () => {
+
+    //utilizo context
+    const pedidoContext=useContext(PedidoContext);
+
 
     return ( 
         <Layout>
