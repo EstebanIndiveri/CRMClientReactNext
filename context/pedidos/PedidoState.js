@@ -38,6 +38,7 @@ import{
         return(
             <PedidoContext.Provider
             value={{
+                productos:state.productos,
                 agregarCliente,
                 agregarProducto
             }}
