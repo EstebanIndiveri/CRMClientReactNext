@@ -22,7 +22,7 @@ const AsignarCliente = () => {
   const pedidoContext=useContext(PedidoContext);
 
   const {agregarCliente}=pedidoContext;
-  console.log(agregarCliente);
+  // console.log(agregarCliente);
 
   //consultar DB:
   const {data,loading,error}=useQuery(OBTENER_CLIENTES_USUARIO);

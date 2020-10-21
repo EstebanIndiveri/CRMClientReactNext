@@ -12,7 +12,11 @@ export default(state,action)=>{
                 ...state,
                 cliente:action.payload
             }
-    
+        case SELECCIONAR_PRODUCTO:
+            return{
+                ...state,
+                productos:action.payload
+            }
         default:
             return state
     }
