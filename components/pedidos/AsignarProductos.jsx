@@ -41,7 +41,7 @@ const AsignarProductos = () => {
 
     return ( 
         <Fragment>
-            <p className="mt-10 my-2 bg-white border-l-4 border-gray-800 text-gray-700 p-2 text-sm font-bold">
+            <p className="mt-10 my-2 bg-white border-l-4 border-gray-800 text-gray-700 p-2 text-sm font-bold ">
                 2.- Selecciona los producto al pedido</p>
             <Select
             className="mt-3"

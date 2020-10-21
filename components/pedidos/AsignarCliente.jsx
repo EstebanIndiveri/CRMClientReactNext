@@ -42,9 +42,9 @@ const AsignarCliente = () => {
 
     return ( 
       <Fragment>
-        <p className="mt-10 my-2 bg-white border-l-4 border-gray-800 text-gray-700 p-2 text-sm font-bold">1.- Asigna un cliente al pedido</p>
+        <p className="mt-10 my-2 bg-white border-l-4 border-gray-800 text-gray-700 p-2 text-sm font-bold ">1.- Asigna un cliente al pedido</p>
         <Select
-        className="mt-3"
+        className="mt-3 "
         options={obtenerClientesVendedor}
         // isMulti={true}
         onChange={(option)=>seleccionarCliente(option)}

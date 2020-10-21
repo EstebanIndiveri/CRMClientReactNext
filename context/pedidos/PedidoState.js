@@ -33,6 +33,14 @@ import{
                 payload:productos
             })
         }
+
+        //modifica las cantidades de los productos:
+        const cantidadProductos=nuevoProducto=>{
+            dispatch({
+                type:CANTIDAD_PRODUCTOS,
+                payload:nuevoProducto
+            })
+        }
      
 
         return(
@@ -40,7 +48,8 @@ import{
             value={{
                 productos:state.productos,
                 agregarCliente,
-                agregarProducto
+                agregarProducto,
+                cantidadProductos
             }}
             >
                 {children}
