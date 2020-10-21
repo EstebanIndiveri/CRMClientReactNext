@@ -112,7 +112,7 @@ const NuevoCliente = () => {
             <div className="flex justify-center mt-5">
                 <div className="w-full max-w-lg">
                     <form
-                    className="bg-white shadow-md px-8 pt-6 pb-8 mb-4"
+                    className="bg-white shadow-md px-8 pt-6 pb-8 mb-4 animate__animated animate__fadeIn animate__delay-2s" 
                     onSubmit={formik.handleSubmit}
                     >
                            <div className="mb-4">
