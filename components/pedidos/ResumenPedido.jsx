@@ -7,7 +7,7 @@ const ResumenPedido = () => {
 
     const{productos}=pedidoContext;
 
-    console.log(productos);
+    // console.log(productos);
 
     return ( 
         <Fragment>

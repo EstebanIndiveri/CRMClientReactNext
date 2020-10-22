@@ -6,12 +6,13 @@ const ProductoResumen = ({producto}) => {
     const{nombre,precio}=producto;
 
     const pedidoContext = useContext(PedidoContext);
-    const{cantidadProductos}=pedidoContext;
+    const{cantidadProductos,actualizarTotal}=pedidoContext;
 
     const [cantidad,setCantidad]=useState(0);
 
     useEffect(()=>{
         actualizarCantidad();
+        actualizarTotal();
     },[cantidad])
 
     const actualizarCantidad=()=>{
