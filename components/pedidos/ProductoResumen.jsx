@@ -13,6 +13,7 @@ const ProductoResumen = ({producto}) => {
     useEffect(()=>{
         actualizarCantidad();
         actualizarTotal();
+        console.log(cantidad);
     },[cantidad])
 
     const actualizarCantidad=()=>{

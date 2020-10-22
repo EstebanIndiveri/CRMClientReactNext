@@ -48,11 +48,11 @@ const Pedidos = () => {
             {obtenerPedidosVendedor.length===0?(
                 <p className="mt-5 text-center text-2xl animate__animated animate__fadeIn animate__delay-3s">No hay pedidos aún</p>
             ):(
-                obtenerPedidosVendedor.map(pedido=>(
-                    <Pedido
-                    key={pedido.id}
-                    pedido={pedido}
-                    />
+                obtenerPedidosVendedor.map((pedido)=>(
+                  <Pedido
+                  key={pedido.id}
+                  pedido={pedido}
+                  />
                 ))
             )}
             </Layout>

@@ -119,6 +119,8 @@ const Pedido = ({pedido}) => {
         console.log('eliminando',id);
     
     }
+    // console.log(pedido);
+
 
     return ( 
     <div 
