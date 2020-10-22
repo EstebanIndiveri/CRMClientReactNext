@@ -16,6 +16,29 @@ import Swal from 'sweetalert2';
         }
     }
     `
+    const OBTENER_PEDIDOS=gql`
+
+    query obtenerPedidosVendedor{
+      obtenerPedidosVendedor{
+        id
+        pedido{
+          id
+          cantidad
+          nombre
+        }
+        cliente{
+          id
+          nombre
+          apellido
+          email
+          telefono
+        }
+        vendedor
+        total
+        estado
+      }
+    }
+    `
 
 const NuevoPedido = () => {
     const router=useRouter();
@@ -25,7 +48,20 @@ const NuevoPedido = () => {
 
     //mutation nuevo peddido
 
-    const[nuevoPedido]=useMutation(NUEVO_PEDIDO);
+    const[nuevoPedido]=useMutation(NUEVO_PEDIDO,{
+    
+        update(cache,{data:{nuevoPedido}}){
+            //obtener objeto de cache a a ctualizar
+            const{obtenerPedidosVendedor}=cache.readQuery({query:OBTENER_PEDIDOS});
+            //rewgrite cache
+            cache.writeQuery({
+                query:OBTENER_PEDIDOS,
+                data:{
+                    obtenerPedidosVendedor:[...obtenerPedidosVendedor,nuevoPedido]
+                }
+            })
+        }
+    });
 
     const{cliente,productos,total}=pedidoContext;
 
