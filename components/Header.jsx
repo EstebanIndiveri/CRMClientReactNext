@@ -30,9 +30,9 @@ const Header = () => {
    }
 
     return ( 
-    <div className="flex justify-between mb-6">
+    <div className="sm:flex sm:justify-between mb-6">
 
-        <p className="mr-2 animate__animated animate__fadeIn animate__delay-1s">Hola: {nombre} {apellido}</p> 
+        <p className="mr-2 mb-5 lg:mb-0 animate__animated animate__fadeIn animate__delay-1s">Hola: {nombre} {apellido}</p> 
 
         <button
         onClick={()=>cerraSesion()}
