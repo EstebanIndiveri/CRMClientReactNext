@@ -27,7 +27,7 @@ export default function Home() {
     // console.log(loading);
 
     // if(!data.obtenerClientesVendedor) return router.push('/login')
-    if(data.obtenerClientesVendedor==undefined ||data.obtenerClientesVendedor==null ) return window.location.href='http://localhost:3000/login';
+    if(data.obtenerClientesVendedor==undefined ||data.obtenerClientesVendedor==null ) return window.location.href='/login';
 
   return (
     <Layout>
